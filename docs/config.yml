@@ -1,0 +1,9 @@
+# GitHub Pages configuration file
+
+title: CRCP 3320 Final Project - Fall 2024
+description: Final Project for CRCP 3320 
+
+remote_theme: pages-themes/minimal@v0.2.0
+plugins:
+- jekyll-remote-theme
+ 
