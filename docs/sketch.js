@@ -12,15 +12,14 @@ let particles = [];
 function setup() {
     createCanvas(500, 500);
 
-    position = createVector(0, height/2);
+    // position = createVector(0, height/2);
 }
     
 
 function draw() {
     background(0);
 
-    // calculate the sine wave
-    fill(255);
-    ellipse(position.x, position.y, size, size);
+    // fill(255);
+    // ellipse(position.x, position.y, size, size);
 }
 
