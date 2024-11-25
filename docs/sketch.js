@@ -1,38 +1,27 @@
-let size = 30;
-let amp = 50;
-let freq = 50;
-let period;
-
-let position;
+let count = 1;
+let sines = [];
+let cosines = [];
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
 
-    position = createVector(0, windowHeight/2);
-    period = 2 * PI;
+    for (let i = 0; i < count; i++) {
+        let sine = new Sine();
+        sines.push(sine);
+
+        let cosine = new Cosine();
+        cosines.push(cosine);
+    }
 }
 
 function draw() {
     background(0);
-    let angle = frameCount % (2 * PI);
 
-    // Draw cosine curve
-    beginShape();
+    sines.forEach((sine) => {
+        sine.draw();
+    });
 
-    position.x = frameCount;
-    position.y = amp * sin(position.x * (1 / period)) + 100;
-
-    fill('#34ebeb');
-    ellipse(position.x, position.y, size, size);
-    endShape();
-
-    // Draw sine curve
-    beginShape();
-
-    position.x = frameCount / 2;
-    position.y = amp * cos(position.x * (1 / period)) + 250;
-
-    fill('#f765c2');
-    ellipse(position.x, position.y, size, size);
-    endShape();
+    cosines.forEach((cosine) => {
+        cosine.draw();
+    })
 }
