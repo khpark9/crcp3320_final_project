@@ -1,55 +1,38 @@
-let size = 75;
+let size = 30;
 let amp = 50;
-let period = 300;
-
-let graphX = 50;
-let graphY = 300;
+let freq = 50;
+let period;
 
 let position;
 
 function setup() {
-    createCanvas(500, 500);
-    angleMode(DEGREES);
+    createCanvas(windowWidth, windowHeight);
 
-    position = createVector(200, 150);
+    position = createVector(0, windowHeight/2);
+    period = 2 * PI;
 }
-    
 
 function draw() {
     background(0);
-
-    let angle = frameCount % 360;
-
-    let pointX = position.x + size * cos(angle);
-    let pointY = position.y + size * cos(angle);
-
-    line(position.x, position.y, pointX, pointY);
-
-    fill('#34ebeb');
-    circle(pointX, position.y, 10);
-
-    fill('#f765c2');
-    circle(position.x, pointY, 10);
+    let angle = frameCount % (2 * PI);
 
     // Draw cosine curve
-    noFill();
-    stroke('#34ebeb');
     beginShape();
-    for (let t = 0; t <= 360; t++) {
-        let x = map(t, 0, 360, graphX, graphX + period);
-        let y = graphY - amp * cos(t);
-        vertex(x, y);
-    }
+
+    position.x = frameCount;
+    position.y = amp * sin(position.x * (1 / period)) + 100;
+
+    fill('#34ebeb');
+    ellipse(position.x, position.y, size, size);
     endShape();
 
     // Draw sine curve
-    noFill();
-    stroke('#f765c2');
     beginShape();
-    for (let t = 0; t <= 360; t++) {
-        let x = map(t, 0, 360, graphX, graphX + period);
-        let y = graphY - amp * sin(t);
-        vertex(x, y);
-    }
+
+    position.x = frameCount / 2;
+    position.y = amp * cos(position.x * (1 / period)) + 250;
+
+    fill('#f765c2');
+    ellipse(position.x, position.y, size, size);
     endShape();
 }
