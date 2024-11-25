@@ -1,4 +1,4 @@
-// let numWaves = 5;
+let numWaves = 5;
 let numParticles = Math.floor(random(50, 100));
 let size = 4;
 let amp = Math.floor(random(25, 50));
@@ -14,18 +14,16 @@ function setup() {
 
     position = createVector(0, height/2);
     
-    for (let i = 0; i < numParticles; i++) {
-        wave.push({
-            offset: i * 20,
-            phase: Math.random() * Math.PI * 2, // Random phase
-            color: `hsl(${(i / numWaves) * 360}, 80%, 60%)`, 
-        });
-    }
+    ellipse(position.x, position.y, size, size);
+
 }
     
 
 function draw() {
     background(0);
+
+    // calculate the sine wave
+    ellipse(position.x, position.y, size, size);
 
 }
 
