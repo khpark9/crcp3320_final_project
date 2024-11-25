@@ -18,22 +18,22 @@ function setup() {
 function draw() {
     background(0);
 
-    let angle = framecount % 360;
+    let angle = frameCount % 360;
 
     let pointX = position.x + size * cos(angle);
     let pointY = position.y + size * cos(angle);
 
     line(position.x, position.y, pointX, pointY);
 
-    fill('blue');
+    fill('#34ebeb');
     circle(pointX, position.y, 10);
 
-    fill('green');
+    fill('#f765c2');
     circle(position.x, pointY, 10);
 
     // Draw cosine curve
     noFill();
-    stroke('blue');
+    stroke('#34ebeb');
     beginShape();
     for (let t = 0; t <= 360; t++) {
         let x = map(t, 0, 360, graphX, graphX + period);
@@ -44,7 +44,7 @@ function draw() {
 
     // Draw sine curve
     noFill();
-    stroke('green');
+    stroke('#f765c2');
     beginShape();
     for (let t = 0; t <= 360; t++) {
         let x = map(t, 0, 360, graphX, graphX + period);
