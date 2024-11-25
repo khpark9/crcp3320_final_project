@@ -1,44 +1,55 @@
-// let numWaves = 5;
-// let numParticles = Math.floor(random(50, 100));
-// let size = 4;
-// let amp = Math.floor(random(25, 50));
-// let freq = 0.02;
-// let speed = 2;
-// let position;
+let size = 75;
+let amp = 50;
+let period = 300;
 
-// let wave;
-// let particles = [];
+let graphX = 50;
+let graphY = 300;
 
-// function setup() {
-//     createCanvas(500, 500);
-
-//     // position = createVector(0, height/2);
-// }
-    
-
-// function draw() {
-//     background(0);
-
-//     // fill(255);
-//     // ellipse(position.x, position.y, size, size);
-// }
-
-
-// code from class
-let f;
-let flowers = [];
-let flowerCount = 100;
+let position;
 
 function setup() {
     createCanvas(500, 500);
-    
-    for (let i = 0; i < flowerCount; i++) {
-        flowers.push(new Flower());
-    }
+    angleMode(DEGREES);
+
+    position = createVector(200, 150);
 }
+    
 
 function draw() {
-    background(255);
-    
-    flowers.forEach((flower) => flower.draw());
+    background(0);
+
+    let angle = framecount % 360;
+
+    let pointX = position.x + size * cos(angle);
+    let pointY = position.y + size * cos(angle);
+
+    line(position.x, position.y, pointX, pointY);
+
+    fill('blue');
+    circle(pointX, position.y, 10);
+
+    fill('green');
+    circle(position.x, pointY, 10);
+
+    // Draw cosine curve
+    noFill();
+    stroke('blue');
+    beginShape();
+    for (let t = 0; t <= 360; t++) {
+        let x = map(t, 0, 360, graphX, graphX + period);
+        let y = graphY - amp * cos(t);
+        vertex(x, y);
+    }
+    endShape();
+
+    // Draw sine curve
+    noFill();
+    stroke('green');
+    beginShape();
+    for (let t = 0; t <= 360; t++) {
+        let x = map(t, 0, 360, graphX, graphX + period);
+        let y = graphY - amp * sin(t);
+        vertex(x, y);
+    }
+    endShape();
 }
