@@ -3,7 +3,7 @@ let sines = [];
 let cosines = [];
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(windowWidth - 25, windowHeight - 25);
 
     for (let i = 0; i < count; i++) {
         sines.push(new Sine());
