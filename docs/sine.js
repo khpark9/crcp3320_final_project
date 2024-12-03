@@ -18,7 +18,7 @@ class Sine {
         this.#randomPosY = random(25, height - 25);
         this.#speed = random(0, 1); 
         this.#colorBuffer = this.#createColorBuffer(this.#size);
-        this.#colorList = [color('#FEC5BB'), color('#FCD5CE'), color('#FAE1DD'), color('#F8EDEB'), color('#E8E8E4')];
+        this.#colorList = [color('#006466'), color('#065A60'), color('#0B525B'), color('#144552'), color('#1B3A4B')];
         this.#color = random(this.#colorList);
     }
 

@@ -40,7 +40,7 @@ function draw() {
         for (let wave of waves) {
             y += wave.evaluate(x);
             noStroke();
-            fill(255,0,0);
+            fill('#ff0051');
             ellipse(x, y + height/2, 10);
         }
     }

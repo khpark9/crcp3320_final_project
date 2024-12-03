@@ -18,7 +18,7 @@ class Cosine {
         this.#randomPosY = random(25, height - 25);
         this.#speed = random(0, 1); 
         this.#colorBuffer = this.#createColorBuffer(this.#size);
-        this.#colorList = [color('#D8E2DC'), color('#ECE4DB'), color('#FFE5D9'), color('#FFD7BA'), color('#FEC89A')];
+        this.#colorList = [color('#212F45'), color('#272640'), color('#312244'), color('#3E1F47'), color('#4D194D')];
         this.#color = random(this.#colorList);
     }
 
