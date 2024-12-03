@@ -3,18 +3,23 @@ class Sine {
     #amp;
     #period;
     #colorBuffer;
+    #color;
     #size;
     #randomPosY;
     #speed;
 
+    #colorList;
+
     constructor() {
         this.#position = createVector(random(width), random(height));
-        this.#amp = random(-50, 50);
+        this.#amp = random(-20, 20);
         this.#period = random(0.0005, 0.1);
         this.#size = random(10, 30);
         this.#randomPosY = random(25, height - 25);
-        this.#speed = random(1, 3); 
+        this.#speed = random(0, 1); 
         this.#colorBuffer = this.#createColorBuffer(this.#size);
+        this.#colorList = [color('#FEC5BB'), color('#FCD5CE'), color('#FAE1DD'), color('#F8EDEB'), color('#E8E8E4')];
+        this.#color = random(this.#colorList);
     }
 
     draw() {
@@ -32,10 +37,22 @@ class Sine {
         // f765c2 (pink) & f1ffab (yellow)
         // ffa69e (salmon) & faf3dd (beige)
 
+        // monochromatic
+        // abc4ff, b6ccfe, c1d3fe, ccdbfd, d7e3fc, e2eafc, edf2fb
+        let colList = ['f765c2', 'ffa69e'];
+
         // Draw a horizontal gradient (right to left)
         for (let x = 0; x < size; x++) {
             let inter = map(x, 0, size, 1, 0); // Interpolation factor (right to left)
+            let col = random(colList);
             let c = lerpColor(color('#ffa69e'), color('#faf3dd'), inter); // Gradient between two colors
+
+            if (col == 'f765c2') {
+                c = lerpColor(color('#f765c2'), color('#ffa69e'), inter); // Gradient between two colors
+            } else {
+                c = lerpColor(color('#ffa69e'), color('#faf3dd'), inter); // Gradient between two colors
+            }
+
             buffer.stroke(c);
             buffer.line(x, 0, x, size); // Vertical gradient line
         }
@@ -71,8 +88,10 @@ class Sine {
         this.#position.y = this.#amp * sin(this.#position.x * this.#period) + this.#randomPosY;
     
         noStroke();
-        imageMode(CENTER);
-        image(this.#colorBuffer, this.#position.x, this.#position.y);
+        // imageMode(CENTER);
+        // image(this.#colorBuffer, this.#position.x, this.#position.y);
+        fill(this.#color);
+        ellipse(this.#position.x, this.#position.y, this.#size, this.#size);
         endShape();
     }
 
