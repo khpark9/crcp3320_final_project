@@ -8,6 +8,8 @@ let waves = [];
 let waveColor;
 let waveColors = [];
 
+let t;
+
 function setup() {
     createCanvas(windowWidth, windowHeight);
 
@@ -25,6 +27,19 @@ function setup() {
     for (let i = 0; i < count2; i++) {
         cosines.push(new Cosine());
     }
+
+    t = "Press the space bar!";
+
+    // draw legend
+    beginShape();
+    noStroke();
+    fill(200);
+    rect(15, 25, 200, 50);
+
+    fill(0);
+    textSize(20);
+    text(t, 20, 40, 195, 45);
+    endShape();
 }
 
 function draw() {
@@ -54,6 +69,17 @@ function draw() {
     for (let wave of waves) {
         wave.update();
     }
+
+    // draw legend
+    beginShape();
+    noStroke();
+    fill(200);
+    rect(15, 25, 200, 50);
+
+    fill(0);
+    textSize(20);
+    text(t, 20, 40, 195, 45);
+    endShape();
 }
 
 function keyPressed() {
